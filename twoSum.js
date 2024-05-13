@@ -11,7 +11,6 @@ var twoSum = function(nums, target) {
         return [i, j]
       }
       else if (nums[i] === nums[j] && nums[i] + nums[j] === target) {
-        console.log('else if')
         return [i, j]
       }
     }
