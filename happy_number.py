@@ -1,32 +1,37 @@
 from functools import reduce
 import os
+
 os.system("clear")
 
 
 class Solution:
 
-    def isHappy(self, n: int) -> bool:
+    def isHappy(self, n: int, visited=None) -> bool:
+        if visited is None:
+            visited = set()
 
-        array_of_n = ([int(digit) for digit in str(n)])
-        # print(f"array of n: {array_of_n}")
-
-        squared_array = list(map(lambda num: num ** 2, array_of_n))
-        # print(f"squared array: {squared_array}")
-
-        def sum(n1, n2):
-            return n1 + n2
-
-        array_sum = reduce(lambda num1, num2: num1 + num2, squared_array)
-
-        if array_sum == 1:
+        if n == 1:
             return True
 
-        return self.isHappy(array_sum)
+        if n in visited:
+            return False
+
+        visited.add(n)
+
+        digits_of_n = ([int(digit) for digit in str(n)])
+        squared_digits = list(map(lambda num: num ** 2, digits_of_n))
+        reduced = reduce(lambda num1, num2: num1 + num2, squared_digits)
+
+        return self.isHappy(reduced, visited)
 
 
-test = Solution()
+test_case = Solution()
 
-print(test.isHappy(19))
-# print(test.isHappy(82))
-# print(test.isHappy(68))
-# print(test.isHappy(100))
+# print(test_case.isHappy(19))
+# print(test_case.isHappy(82))
+# print(test_case.isHappy(68))
+# print(test_case.isHappy(100))
+
+# print(test_case.isHappy(1))
+# print(test_case.isHappy(2))
+# print(test_case.isHappy(20))
