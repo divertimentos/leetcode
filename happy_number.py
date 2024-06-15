@@ -7,11 +7,11 @@ os.system("clear")
 class Solution:
 
     def isHappy(self, n: int, visited=None) -> bool:
-        if visited is None:
-            visited = set()
-
         if n == 1:
             return True
+
+        if visited is None:
+            visited = set()
 
         if n in visited:
             return False
@@ -27,11 +27,11 @@ class Solution:
 
 test_case = Solution()
 
-# print(test_case.isHappy(19))
+print(f"19: {test_case.isHappy(19)}")
 # print(test_case.isHappy(82))
 # print(test_case.isHappy(68))
 # print(test_case.isHappy(100))
 
-# print(test_case.isHappy(1))
-# print(test_case.isHappy(2))
-# print(test_case.isHappy(20))
+print(f"1: {test_case.isHappy(1)}")
+print(f"2: {test_case.isHappy(2)}")
+print(f"20: {test_case.isHappy(20)}")
